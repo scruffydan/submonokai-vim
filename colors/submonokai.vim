@@ -64,7 +64,7 @@ endfunction
 
 " Expose the more complicated style setting via a global function
 fun! g:SubMonokaiHighlight(group, style)
-	return s:h(a:group, a:style)
+  return s:h(a:group, a:style)
 endfun
 
 " Palette
@@ -72,8 +72,8 @@ endfun
 " Convenience function to have a convenient script variable name and an
 " namespaced global variable
 fun! s:create_palette_color(color_name, color_data)
-	exec 'let s:' . a:color_name . ' = a:color_data'
-	exec 'let g:submonokai_' . a:color_name . ' = a:color_data'
+  exec 'let s:' . a:color_name . ' = a:color_data'
+  exec 'let g:submonokai_' . a:color_name . ' = a:color_data'
 endf
 
 call s:create_palette_color('brightwhite', { 'gui': '#FFFFFF', 'cterm': '231' })
@@ -85,7 +85,7 @@ call s:create_palette_color('darkblack',   { 'gui': '#211F1C', 'cterm': '233' })
 call s:create_palette_color('grey',        { 'gui': '#808080', 'cterm': '243' })
 call s:create_palette_color('lightgrey',   { 'gui': '#8A8A8A', 'cterm': '237' })
 call s:create_palette_color('darkgrey',    { 'gui': '#767676', 'cterm': '239' })
-call s:create_palette_color('warmgrey',    { 'gui': '#8b7575', 'cterm': '59'  })
+call s:create_palette_color('warmgrey',    { 'gui': '#75715E', 'cterm': '59'  })
 
 call s:create_palette_color('pink',        { 'gui': '#FB2B71', 'cterm': '197' })
 call s:create_palette_color('green',       { 'gui': '#A6E22E', 'cterm': '148' })
@@ -132,7 +132,7 @@ call s:h('SublimeDarkRed',     { 'fg': s:darkred      })
 call s:h('ColorColumn',  { 'bg': s:lightblack2                                             })
 hi! link Conceal SublimeLightGrey
 call s:h('CursorColumn', { 'bg': s:lightblack2                                             })
-"call s:h('CursorLine',   { 'bg': s:lightblack2                                             })
+call s:h('CursorLine',   { 'fg': s:orange,      'bg': s:lightblack2                        })
 call s:h('CursorLineNr', { 'fg': s:orange,      'bg': s:lightblack                         })
 call s:h('DiffAdd',      { 'fg': s:addfg,       'bg': s:addbg                              })
 call s:h('DiffChange',   { 'fg': s:changefg,    'bg': s:changebg                           })
@@ -143,7 +143,7 @@ call s:h('ErrorMsg',     { 'fg': s:black,       'bg': s:red,      'format': 'sta
 hi! link FoldColumn SublimeDarkBlack
 call s:h('Folded',       { 'fg': s:warmgrey,    'bg': s:darkblack                          })
 call s:h('Incsearch',    {                                                                 })
-call s:h('LineNr',       { 'fg': s:yellow,      'bg': s:darkblack                          })
+call s:h('LineNr',       { 'fg': s:warmgrey,      'bg': s:darkblack                          })
 call s:h('MatchParen',   { 'format': 'reverse'                                             })
 hi! link ModeMsg SublimeYellow
 hi! link MoreMsg SublimeYellow
@@ -157,7 +157,7 @@ hi! link Question SublimeYellow
 call s:h('Search',       { 'format': 'reverse,underline'                                   })
 hi! link SignColumn SublimeLightBlack
 hi! link SpecialKey SublimeLightBlack2
-call s:h('StatusLine',   { 'fg': s:warmgrey,    'bg': s:black,    'format': 'reverse'      })
+call s:h('StatusLine',   { 'fg': s:darkgrey,    'bg': s:black,    'format': 'reverse'      })
 call s:h('StatusLineNC', { 'fg': s:darkgrey,    'bg': s:warmgrey, 'format': 'reverse'      })
 call s:h('TabLine',      { 'fg': s:white,       'bg': s:darkgrey                           })
 call s:h('TabLineFill',  { 'fg': s:grey,        'bg': s:darkgrey                           })
