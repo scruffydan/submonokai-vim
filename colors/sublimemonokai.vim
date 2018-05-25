@@ -1,6 +1,6 @@
 " File:       monokai.vim
-" Maintainer: Erich Gubler (erichdongubler)
-" URL:        https://github.com/erichdongubler/vim-sublime-monokai
+" Maintainer: Dan Moutal
+" URL:        https://github.com/scruffydan/submonokai-vim
 " License:    MIT
 
 " Initialisation
@@ -9,15 +9,15 @@ if !has('gui_running') && &t_Co < 256
   finish
 endif
 
-if !exists('g:sublimemonokai_gui_italic')
-    let g:sublimemonokai_gui_italic = 1
+if !exists('g:submonokai_gui_italic')
+    let g:submonokai_gui_italic = 1
 endif
 
-if !exists('g:sublimemonokai_term_italic')
-    let g:sublimemonokai_term_italic = 0
+if !exists('g:submonokai_term_italic')
+    let g:submonokai_term_italic = 0
 endif
 
-let g:sublimemonokai_termcolors = 256 " does not support 16 color term right now.
+let g:submonokai_termcolors = 256 " does not support 16 color term right now.
 
 set background=dark
 hi clear
@@ -26,7 +26,7 @@ if exists('syntax_on')
   syntax reset
 endif
 
-let colors_name = 'sublimemonokai'
+let colors_name = 'submonokai'
 
 fun! s:h(group, style)
   let s:ctermformat = 'NONE'
@@ -35,17 +35,17 @@ fun! s:h(group, style)
     let s:ctermformat = a:style.format
     let s:guiformat = a:style.format
   endif
-  if g:sublimemonokai_term_italic == 0
+  if g:submonokai_term_italic == 0
     let s:ctermformat = substitute(s:ctermformat, ',italic', '', '')
     let s:ctermformat = substitute(s:ctermformat, 'italic,', '', '')
     let s:ctermformat = substitute(s:ctermformat, 'italic', '', '')
   endif
-  if g:sublimemonokai_gui_italic == 0
+  if g:submonokai_gui_italic == 0
     let s:guiformat = substitute(s:guiformat, ',italic', '', '')
     let s:guiformat = substitute(s:guiformat, 'italic,', '', '')
     let s:guiformat = substitute(s:guiformat, 'italic', '', '')
   endif
-  if g:sublimemonokai_termcolors == 16
+  if g:submonokai_termcolors == 16
     let l:ctermfg = (has_key(a:style, 'fg') ? a:style.fg.cterm16 : 'NONE')
     let l:ctermbg = (has_key(a:style, 'bg') ? a:style.bg.cterm16 : 'NONE')
   else
@@ -63,7 +63,7 @@ fun! s:h(group, style)
 endfunction
 
 " Expose the more complicated style setting via a global function
-fun! g:SublimeMonokaiHighlight(group, style)
+fun! g:submonokaiHighlight(group, style)
 	return s:h(a:group, a:style)
 endfun
 
@@ -73,28 +73,28 @@ endfun
 " namespaced global variable
 fun! s:create_palette_color(color_name, color_data)
 	exec 'let s:' . a:color_name . ' = a:color_data'
-	exec 'let g:sublimemonokai_' . a:color_name . ' = a:color_data'
+	exec 'let g:submonokai_' . a:color_name . ' = a:color_data'
 endf
 
 call s:create_palette_color('brightwhite', { 'gui': '#FFFFFF', 'cterm': '231' })
-call s:create_palette_color('white',       { 'gui': '#E8E8E3', 'cterm': '252' })
+call s:create_palette_color('white',       { 'gui': '#F8F8F2', 'cterm': '252' })
 call s:create_palette_color('black',       { 'gui': '#272822', 'cterm': '234' })
-call s:create_palette_color('lightblack',  { 'gui': '#2D2E27', 'cterm': '235' })
-call s:create_palette_color('lightblack2', { 'gui': '#383a3e', 'cterm': '236' })
+call s:create_palette_color('lightblack',  { 'gui': '#21211d', 'cterm': '235' })
+call s:create_palette_color('lightblack2', { 'gui': '#2C2C26', 'cterm': '236' })
 call s:create_palette_color('darkblack',   { 'gui': '#211F1C', 'cterm': '233' })
-call s:create_palette_color('grey',        { 'gui': '#8F908A', 'cterm': '243' })
-call s:create_palette_color('lightgrey',   { 'gui': '#575b61', 'cterm': '237' })
-call s:create_palette_color('darkgrey',    { 'gui': '#64645e', 'cterm': '239' })
-call s:create_palette_color('warmgrey',    { 'gui': '#75715E', 'cterm': '59'  })
+call s:create_palette_color('grey',        { 'gui': '#808080', 'cterm': '243' })
+call s:create_palette_color('lightgrey',   { 'gui': '#8A8A8A', 'cterm': '237' })
+call s:create_palette_color('darkgrey',    { 'gui': '#767676', 'cterm': '239' })
+call s:create_palette_color('warmgrey',    { 'gui': '#8b7575', 'cterm': '59'  })
 
-call s:create_palette_color('pink',        { 'gui': '#f92772', 'cterm': '197' })
-call s:create_palette_color('green',       { 'gui': '#a6e22d', 'cterm': '148' })
-call s:create_palette_color('aqua',        { 'gui': '#66d9ef', 'cterm': '81'  })
-call s:create_palette_color('yellow',      { 'gui': '#e6db74', 'cterm': '186' })
-call s:create_palette_color('orange',      { 'gui': '#fd9720', 'cterm': '208' })
-call s:create_palette_color('purple',      { 'gui': '#ae81ff', 'cterm': '141' })
-call s:create_palette_color('red',         { 'gui': '#e73c50', 'cterm': '196' })
-call s:create_palette_color('darkred',     { 'gui': '#5f0000', 'cterm': '52'  })
+call s:create_palette_color('pink',        { 'gui': '#FB2B71', 'cterm': '197' })
+call s:create_palette_color('green',       { 'gui': '#A6E22E', 'cterm': '148' })
+call s:create_palette_color('aqua',        { 'gui': '#00DFF3', 'cterm': '81'  })
+call s:create_palette_color('yellow',      { 'gui': '#E6DC6D', 'cterm': '186' })
+call s:create_palette_color('orange',      { 'gui': '#FF9800', 'cterm': '208' })
+call s:create_palette_color('purple',      { 'gui': '#0097F3', 'cterm': '141' })
+call s:create_palette_color('red',         { 'gui': '#ED3A2C', 'cterm': '196' })
+call s:create_palette_color('darkred',     { 'gui': '#DF2213', 'cterm': '52'  })
 
 call s:create_palette_color('addfg',       { 'gui': '#d7ffaf', 'cterm': '193' })
 call s:create_palette_color('addbg',       { 'gui': '#5f875f', 'cterm': '65'  })
