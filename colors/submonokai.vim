@@ -132,7 +132,7 @@ call s:h('SublimeDarkRed',     { 'fg': s:darkred      })
 call s:h('ColorColumn',  { 'bg': s:lightblack2                                             })
 hi! link Conceal SublimeLightGrey
 call s:h('CursorColumn', { 'bg': s:lightblack2                                             })
-call s:h('CursorLine',   { 'bg': s:lightblack2                                             })
+"call s:h('CursorLine',   { 'bg': s:lightblack2                                             })
 call s:h('CursorLineNr', { 'fg': s:orange,      'bg': s:lightblack                         })
 call s:h('DiffAdd',      { 'fg': s:addfg,       'bg': s:addbg                              })
 call s:h('DiffChange',   { 'fg': s:changefg,    'bg': s:changebg                           })
@@ -143,7 +143,7 @@ call s:h('ErrorMsg',     { 'fg': s:black,       'bg': s:red,      'format': 'sta
 hi! link FoldColumn SublimeDarkBlack
 call s:h('Folded',       { 'fg': s:warmgrey,    'bg': s:darkblack                          })
 call s:h('Incsearch',    {                                                                 })
-call s:h('LineNr',       { 'fg': s:grey,        'bg': s:lightblack                         })
+call s:h('LineNr',       { 'fg': s:yellow,      'bg': s:darkblack                          })
 call s:h('MatchParen',   { 'format': 'reverse'                                             })
 hi! link ModeMsg SublimeYellow
 hi! link MoreMsg SublimeYellow
