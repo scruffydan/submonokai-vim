@@ -63,7 +63,7 @@ fun! s:h(group, style)
 endfunction
 
 " Expose the more complicated style setting via a global function
-fun! g:submonokaiHighlight(group, style)
+fun! g:SubMonokaiHighlight(group, style)
 	return s:h(a:group, a:style)
 endfun
 
