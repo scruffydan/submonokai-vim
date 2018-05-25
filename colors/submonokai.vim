@@ -156,7 +156,7 @@ call s:h('PmenuThumb',   { 'fg': s:lightblack,  'bg': s:grey                    
 hi! link Question SublimeYellow
 call s:h('Search',       { 'format': 'reverse,underline'                                   })
 hi! link SignColumn SublimeLightBlack
-hi! link SpecialKey SublimeLightBlack2
+hi! link SpecialKey SublimeOrange
 call s:h('StatusLine',   { 'fg': s:darkgrey,    'bg': s:black,    'format': 'reverse'      })
 call s:h('StatusLineNC', { 'fg': s:darkgrey,    'bg': s:warmgrey, 'format': 'reverse'      })
 call s:h('TabLine',      { 'fg': s:white,       'bg': s:darkgrey                           })
@@ -667,3 +667,4 @@ hi! link zshTypes    Keyword
 " * Semicolons in `if` blocks are `Keyword`ed in Sublime but not distinct in
 "     Vim
 " * Commands aren't distinct from builtins and keywords in Vim
+
