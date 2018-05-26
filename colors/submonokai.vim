@@ -90,9 +90,9 @@ call s:create_palette_color('warmgrey',    { 'gui': '#75715E', 'cterm': '59'  })
 call s:create_palette_color('pink',        { 'gui': '#FB2B71', 'cterm': '197' })
 call s:create_palette_color('green',       { 'gui': '#A6E22E', 'cterm': '148' })
 call s:create_palette_color('aqua',        { 'gui': '#00DFF3', 'cterm': '81'  })
-call s:create_palette_color('yellow',      { 'gui': '#E6DC6D', 'cterm': '186' })
+call s:create_palette_color('yellow',      { 'gui': '#E6DC6D', 'cterm': '185' })
 call s:create_palette_color('orange',      { 'gui': '#FF9800', 'cterm': '208' })
-call s:create_palette_color('purple',      { 'gui': '#0097F3', 'cterm': '141' })
+call s:create_palette_color('purple',      { 'gui': '#0097F3', 'cterm': '33'  })
 call s:create_palette_color('red',         { 'gui': '#ED3A2C', 'cterm': '196' })
 call s:create_palette_color('darkred',     { 'gui': '#DF2213', 'cterm': '52'  })
 
@@ -132,8 +132,8 @@ call s:h('SublimeDarkRed',     { 'fg': s:darkred      })
 call s:h('ColorColumn',  { 'bg': s:lightblack2                                             })
 hi! link Conceal SublimeLightGrey
 call s:h('CursorColumn', { 'bg': s:lightblack2                                             })
-call s:h('CursorLine',   { 'fg': s:orange,      'bg': s:lightblack2                        })
-call s:h('CursorLineNr', { 'fg': s:orange,      'bg': s:lightblack                         })
+call s:h('CursorLine',   { 'bg': s:darkblack                                               })
+call s:h('CursorLineNr', { 'fg': s:orange,      'bg': s:darkblack                          })
 call s:h('DiffAdd',      { 'fg': s:addfg,       'bg': s:addbg                              })
 call s:h('DiffChange',   { 'fg': s:changefg,    'bg': s:changebg                           })
 call s:h('DiffDelete',   { 'fg': s:black,       'bg': s:delbg                              })
@@ -143,7 +143,7 @@ call s:h('ErrorMsg',     { 'fg': s:black,       'bg': s:red,      'format': 'sta
 hi! link FoldColumn SublimeDarkBlack
 call s:h('Folded',       { 'fg': s:warmgrey,    'bg': s:darkblack                          })
 call s:h('Incsearch',    {                                                                 })
-call s:h('LineNr',       { 'fg': s:warmgrey,      'bg': s:darkblack                          })
+call s:h('LineNr',       { 'fg': s:warmgrey,    'bg': s:darkblack                          })
 call s:h('MatchParen',   { 'format': 'reverse'                                             })
 hi! link ModeMsg SublimeYellow
 hi! link MoreMsg SublimeYellow
