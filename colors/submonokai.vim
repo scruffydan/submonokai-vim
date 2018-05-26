@@ -132,7 +132,11 @@ call s:h('SublimeDarkRed',     { 'fg': s:darkred      })
 call s:h('ColorColumn',  { 'bg': s:lightblack2                                             })
 hi! link Conceal SublimeLightGrey
 call s:h('CursorColumn', { 'bg': s:lightblack2                                             })
-call s:h('CursorLine',   { 'bg': s:darkblack                                               })
+set cursorline
+call s:h('CursorLine',   { 'bg': s:darkblack                         })
+hi! CursorLine ctermbg=NONE guibg=NONE
+autocmd InsertEnter * call s:h('CursorLine',   { 'bg': s:darkblack                         })
+autocmd InsertLeave * hi! CursorLine ctermbg=NONE guibg=NONE
 call s:h('CursorLineNr', { 'fg': s:orange,      'bg': s:darkblack                          })
 call s:h('DiffAdd',      { 'fg': s:addfg,       'bg': s:addbg                              })
 call s:h('DiffChange',   { 'fg': s:changefg,    'bg': s:changebg                           })
