@@ -1,18 +1,13 @@
-# Sublime Monokai for Vim
+# Submonokai for Vim
 
-`vim-sublime-monokai` is a refined Monokai color scheme for `vim` tries to look
-like Sublime's default color scheme. It's derived from the work put into:
+`SubMonikai` is a refined Monokai color scheme for `vim` and `neovim`.
 
-* [sickill/vim-monokai](https://github.com/sickill/vim-monokai)
-* [crusoexia/vim-monokai](https://github.com/crusoexia/vim-monokai)
+It's forked from the following excellent theme:
 
-I noticed that there were several places where the highlighting wasn't entirely
-faithful to that of Sublime, which is my second choice for editing in my
-day-to-day. The purpose of this project is to provide an experience that
-matches Sublime as closely as possible.
+* [ErichDonGubler/vim-sublime-monokai](https://github.com/ErichDonGubler/vim-sublime-monokai)
 
-Note that, in my case, I use several plugins to enhance my own highlighting and
-`ctags` experience. Where possible, the dependent plugins have been noted for
+There are several plugins used to enhance highlighting.
+Where possible, the dependent plugins have been noted for
 languages whose highlighting would otherwise be impossible to make equivalent
 to Sublime. Conflicts with other plugins that I've used have been noted. You
 will NOT get full fidelity with Sublime's highlighting if you use conflicting
@@ -21,7 +16,7 @@ plugins with this color scheme enabled.
 ## Installation
 
 Use your favorite plugin manager! Alternatively, download the
-[`colors/sublimemonokai.vim`](https://raw.githubusercontent.com/erichdongubler/vim-sublime-monokai/master/colors/sublimemonokai.vim)
+[`colors/submonokai.vim`](https://raw.githubusercontent.com/scruffydan/submonokai-vim/master/colors/submonokai.vim)
 file and move it into your `colors` folder.
 
 ## Usage
@@ -31,12 +26,12 @@ following to your `vimrc`:
 
 ```viml
 syntax on
-colorscheme sublimemonokai
+colorscheme submonokai
 ```
 
 ## Terminal support
 
-`vim-sublime-monokai` only support 256 colours in terminal. If you are using a
+`SubMonokai` only support 256 colours in terminal. If you are using a
 terminal which support truecolor like **iterm2**, enable the GUI color by
 adding the following to your `vimrc`:
 
