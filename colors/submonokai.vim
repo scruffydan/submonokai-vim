@@ -272,7 +272,10 @@ hi! link cStatement        Keyword
 hi! link cStorageClass     SublimePink
 hi! link cStructure        SublimeType
 hi! link cType             SublimeType
-" FIXME: Function definitions
+" XXX: Other known deficiencies:
+" * There's no way to distinguish between function calls and
+"     definitions/declarations. :( If you prefer both to be colored, then you
+"     can use `hi! link cCustom <color>`.
 
 " CSS
 
@@ -314,6 +317,10 @@ hi! link cppSTLios       SublimeAqua
 " XXX: There may be no special highlighting here in Sublime itself
 hi! link cppSTLnamespace SublimePurple
 hi! link cppType         SublimeType
+" XXX: Other known deficiencies:
+" * There's no way to distinguish between function calls and
+"     definitions/declarations. :( If you prefer both to be colored, then you
+"     can use `hi! link cCustom <color>`.
 
 " C#
 
@@ -398,6 +405,34 @@ hi! link dotKeyword SublimeType
 " * Vim doesn't distinctly identify declarations like `digraph *blah* { ... }`.
 " * Vim doesn't have a group for escape chars (i.e., for `label` values).
 
+" Go
+
+hi! link goArgumentName      SublimeContextParam
+hi! link goDeclType          SublimeType
+hi! link goDeclaration       SublimeType
+hi! link goField             Identifier
+hi! link goFunction          Tag
+hi! link goFunctionCall      SublimeFunctionCall
+" Variation: It's not a bad idea to highlight these separately. Maybe using
+" `PreProc` and `Special` like in vanilla `vim-go` upstream isn't a bad idea.
+hi! link goGenerate          Comment
+hi! link goGenerateVariables Comment
+" Variation: It's nice to have builtins highlighted specially, though Sublime
+" doesn't do this. I would use `Special` here.
+hi! link goExtraType         Identifier
+hi! link goImport            Keyword
+hi! link goPackage           Keyword
+hi! link goReceiverVar       SublimeContextParam
+hi! link goStatement         Keyword
+hi! link goType              SublimeType
+" Variation: I like this better as `SublimeType`, since it has symmetry with
+" `goType`.
+hi! link goTypeConstructor   Identifier
+hi! link goTypeDecl          SublimeType
+hi! link goTypeName          Tag
+hi! link goVarAssign         Normal
+hi! link goVarDefs           Normal
+
 " HTML
 " This partially depends on XML -- make sure that groups in XML don't
 " adversely affect this!
@@ -443,6 +478,7 @@ call s:h('jsFuncArgRest',   { 'fg': s:purple, 'format': 'italic' })
 hi! link jsFuncArgs       SublimeContextParam
 hi! link jsFuncCall       SublimeFunctionCall
 hi! link jsFuncName       Tag
+hi! link jsFunction       SublimeType
 hi! link jsFunctionKey    Tag
 " FIXME: FutureKeys includes a bit too much. It had some type names, which should be aqua, but most of the keywords that might actually get used would be pink (keywords like public, abstract).
 hi! link jsFutureKeys     Keyword
@@ -459,7 +495,7 @@ hi! link jsRepeat         Keyword
 hi! link jsReturn         Keyword
 hi! link jsStatement      Keyword
 hi! link jsStatic         jsStorageClass
-hi! link jsStorageClass   SublimeAqua
+hi! link jsStorageClass   SublimeType
 hi! link jsSuper          SublimeContextParam
 hi! link jsThis           SublimeContextParam
 hi! link jsTry            Keyword
@@ -467,7 +503,7 @@ hi! link jsUndefined      Constant
 
 " JSON
 
-hi! link jsonKeyword Normal
+hi! link jsonKeyword Identifier
 
 " LESS
 
@@ -498,6 +534,45 @@ hi! link NERDTreeGitStatusModified SublimeOrange
 hi! link NERDTreeGitStatusRenamed SublimeOrange
 hi! link NERDTreeGitStatusUntracked SublimeGreen
 
+" PHP
+
+" Variation: It's actually a cool idea to style these to assist reading.
+hi! link phpClass           Tag
+call s:h('phpClassExtends', { 'fg': s:green, 'format': 'italic' })
+hi! link phpComment         Comment
+hi! link phpCommentStar     SublimeDocumentation
+hi! link phpCommentTitle    SublimeDocumentation
+hi! link phpDocComment      SublimeDocumentation
+hi! link phpDocIdentifier   SublimeDocumentation
+hi! link phpDocParam        SublimeDocumentation
+hi! link phpDocTags         Keyword
+" Variation: It'd be nice to make these a different color, but there's SO MANY
+" THINGS that this applies to!
+hi! link phpKeyword         Keyword
+" Variation: I actually like linking this against `Keyword`.
+hi! link phpMemberSelector  Identifier
+hi! link phpNullValue       Special
+hi! link phpParent          Normal
+call s:h('phpStaticClasses', { 'fg': s:aqua, 'format': 'italic' })
+" Variation: I actually like linking this against `Keyword` instead.
+hi! link phpVarSelector     Identifier
+" XXX: Other noted deficiencies:
+" * Links in doc comments are highlighted aqua in Sublime, but there's no
+"     distinguishing right now with php.vim.
+" * `phpKeyword` is used as a blanket group for several things that Sublime
+"     distinguishes right now. For example:
+"     * `echo` should be aqua
+"     * `function` should be a `SublimeType`
+"     * `return` should be a `Keyword`
+"     * `class` should be aqua and italic (maybe `SublimeType`?)
+"
+"     ... but these are all listed as a `Keyword` right now.
+" * Local args don't have their own highlighting group yet in `php.vim`
+" * Some doctags don't get highlight like in Sublime because Sublime is
+"     weirdly inconsistent with them.
+" * The PHP delimiter uses `Delimiter`, which was set to be pink for other
+"     reasons. Sublime shows them as white, though.
+
 " Python
 
 " This configuration assumed python-mode
@@ -510,9 +585,16 @@ hi! link pythonParam       SublimeContextParam
 " XXX: pythonStatement covers a bit too much...unfortunately, this means that
 " some keywords, like `def`, can't be highlighted like in Sublime yet.
 hi! link pythonStatement   Keyword
-" FIXME: Python special regexp sequences aren't highlighted. :\
+" XXX: Other noted deficiencies:
+" * Python special regexp sequences aren't highlighted. :\
+" * Function cals aren't highlighted like they are in Sublime.
+" * Keyword args aren't highlighted at all like in Sublime.
+"
+" Most of the above really are just because I haven't found a syntax that
+" supports these distinctions yet.
 
 " QuickScope plugin
+
 call s:h('QuickScopePrimary',   { 'bg': s:lightgrey, 'fg': s:black,     'format': 'underline' })
 call s:h('QuickScopeSecondary', { 'bg': s:black,     'fg': s:lightgrey, 'format': 'underline' })
 
@@ -540,22 +622,38 @@ hi! link rubyRailsARMethod            SublimeOrange
 hi! link rubyRailsRenderMethod        SublimeOrange
 hi! link rubyRailsMethod              SublimeOrange
 hi! link rubyConstant                 SublimeAqua
-hi! link rubyBlockArgument            SublimeOrange
-hi! link rubyBlockParameter           SublimeOrange
+hi! link rubyBlockArgument            SublimeContextParam
+hi! link rubyBlockParameter           SublimeContextParam
 
 " Rust
 
+hi! link rustAttribute      SublimeGrey
 hi! link rustCommentLineDoc SublimeDocumentation
 hi! link rustConditional    Conditional
-hi! link rustAttribute      SublimeGrey
 hi! link rustDerive         SublimeGrey
 hi! link rustDeriveTrait    SublimeGrey
+" Variation: I like making these Special
+hi! link rustEnumVariant    SublimeType
 hi! link rustFuncCall       SublimeFunctionCall
-hi! link rustIdentifier     Normal
-hi! link rustModPathSep     Normal
+hi! link rustFuncName       Tag
+hi! link rustIdentifier     Tag
+" Variation: I actually like making these Special too
+hi! link rustLifetime       Keyword
 hi! link rustMacro          SublimeFunctionCall
+hi! link rustModPathSep     Normal
 hi! link rustQuestionMark   Keyword
 hi! link rustRepeat         Keyword
+hi! link rustSelf           SublimeContextParam
+" XXX: Deficiencies:
+" * In Sublime, `fn` and `let` keywords are highlighted, but Vim lumps them
+"     with all other keywords
+" * Crate names after `extern crate` are included in `rustIdentifier`, which
+"     is technically more inclusive than Sublime's definition group but not so
+"     bad I don't think it's an okay default.
+" * Sublime does NOT have the `rustEnumVariants` distinction, which is
+"     actually a really nice feature.
+" * No `fn`/lambda param highlighting is available in Vim like in Sublime
+"     here. :(
 
 " SASS
 
@@ -568,7 +666,7 @@ hi! link sassMixinName    SublimeAqua
 hi! link sassMixing       Keyword
 hi! link sassProperty     SublimeAqua
 hi! link sassSelectorOp   Operator
-hi! link sassVariable     Normal
+hi! link sassVariable     Identifier
 
 " SQL
 hi! link Quote        String
@@ -604,7 +702,7 @@ hi! link vimFuncName      SublimeAqua
 hi! link vimFuncNameTag   SublimeAqua
 hi! link vimFunction      SublimeGreen
 hi! link vimFuncVar       SublimeContextParam
-hi! link vimHiGroup       Normal
+hi! link vimHiGroup       Identifier
 hi! link vimIsCommand     SublimeAqua
 hi! link vimMapModKey     SublimeAqua
 hi! link vimMapRhs        SublimeYellow
