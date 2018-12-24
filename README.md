@@ -1,6 +1,6 @@
 # Submonokai for Vim
 
-`SubMonikai` is a refined Monokai color scheme for `vim` and `neovim`.
+`SubMonokai` is a refined Monokai color scheme for `vim` and `neovim`.
 
 It's forked from the following excellent theme:
 
@@ -28,6 +28,14 @@ following to your `vimrc`:
 syntax on
 colorscheme submonokai
 ```
+
+Inside of [`submonokai.vim`](./colors/submonokai.vim) one will find
+notes and suggested variations from exact Sublime colors that contributors have
+found to be superior to vanilla Sublime. It is recommended that you take a look
+and see if there's anything you like! Deficiencies in syntax highlighting
+support that make it impossible to achieve parity with Sublime have also been
+noted. These are prime candidates for PRs if you find a plugin with better
+syntax highlighting groups!
 
 ## Terminal support
 
@@ -66,6 +74,8 @@ highlighting.
 
 ### Javascript
 
+![Javascript](screenshots/javascript.png)
+
 1. [`vim-javascript`](https://github.com/pangloss/vim-javascript) for the core
     language
 2. [`vim-javascript-lib`](https://github.com/crusoexia/vim-javascript-lib), for
@@ -77,8 +87,54 @@ highlighting.
 * [`cSyntaxAfter`](https://github.com/vim-scripts/cSyntaxAfter) conflicts on
     many operator groups.
 
-## Screenshots
+### Go
 
-![Javascript](screenshots/javascript.png)
+![Go](screenshots/go.png)
+
+1. [`vim-go`](https://github.com/fatih/vim-go) for the core language
+
+    You will need at least the following configuration for proper color
+    support:
+
+    ```viml
+    let g:go_highlight_format_strings = 1
+    let g:go_highlight_function_arguments = 1
+    let g:go_highlight_function_calls = 1
+    let g:go_highlight_functions = 1
+    let g:go_highlight_operators = 1
+    let g:go_highlight_types = 1
+    ```
+
+    The following are also provided as options by `vim-go` and are handled
+    gracefully:
+
+    ```viml
+    let g:go_highlight_extra_types = 1
+    let g:go_highlight_fields = 1
+    let g:go_highlight_generate_tags = 1
+    let g:go_highlight_variable_assignments = 1
+    let g:go_highlight_variable_declarations = 1
+    ```
+
+    This should cover all options provided by `vim-go` pertaining to
+    highlighting. If you notice that this is out-of-date, please submit a PR!
+
+### PHP
+
+![PHP](screenshots/php.png)
+
+1. [`StanAngeloff/php.vim`](https://github.com/StanAngeloff/php.vim) for the
+    core language
+
+    You will need at least the following configuration for proper color
+    support:
+
+    ```viml
+    let g:php_var_selector_is_identifier = 1
+    ```
+
+## Other Screenshots
+
+### HTML
 
 ![HTML](screenshots/html.png)
