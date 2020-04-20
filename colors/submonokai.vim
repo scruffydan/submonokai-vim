@@ -161,7 +161,7 @@ call s:h('PmenuThumb',   { 'fg': s:lightblack,  'bg': s:grey                    
 hi! link Question SublimeYellow
 call s:h('Search',       {                                        'format': 'reverse,underline'})
 call s:h('SignColumn',   { 'fg': s:lightblack,  'bg': s:grey                                   })
-hi! link SpecialKey SublimeLightBlack2
+hi! link SpecialKey SublimeOrange
 call s:h('SpellBad',     {                      'bg': s:darkred                                })
 call s:h('SpellCap',     {                      'bg': s:darkyellow                             })
 call s:h('SpellLocal',   {                      'bg': s:darkyellow                             })
